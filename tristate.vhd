@@ -1,20 +1,22 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.std_logic_unsigned.all;
 
-ENTITY tristate IS
-	PORT(Enable :IN STD_LOGIC;
-			Q		:IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-			D		:OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
-END tristate;
+ENTITY somador IS
+	PORT(x,y			:IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+			AddSub 	:IN  STD_LOGIC;
+			f			:OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+			
+END somador;
 
-ARCHITECTURE Behavior OF tristate IS
+ARCHITECTURE LogicFunc OF somador IS
+	
+BEGIN
+	PROCESS(AddSub)
 	BEGIN
-	PROCESS (Enable,Q):
-	IF Enable = '1' THEN
-		D <= Q;
-		ELSIF
-		D <= "ZZZZZZZZ";
-		END IF;
+	IF AddSub ='0'THEN
+	f <= x + y;
+	ELSE
+	f <= x + NOT y + 1; --É FEITO COMPLEMENTO DE 2
+	END IF;
 	END PROCESS;
-END Behavior;
+END LogicFunc;
