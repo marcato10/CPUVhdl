@@ -1,2 +1,2 @@
-# CPUVhdl
-CPU made in VHDL using Intel Quartus for academic purposes.
+# ULA
+Basic ULA written in VHDL for VHDL academic purposes.
